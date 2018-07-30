@@ -23,22 +23,29 @@ var User = new schema ({
 
 var UserSchema = module.exports = mongoose.model('user',User);
 
-module.exports.insertData = function(condition, cb){
+module.exports.insertUser = function(condition, cb){
 	condition.save(cb);
 }
 
-module.exports.findUser = function(condition, cb){
-	UserSchema.findOne(condition, function(err,data){
-		if(err){
+// module.exports.findUser = function(condition, cb){
+// 	UserSchema.findOne(condition, function(err,data){
+// 		if(err){
+// 			cb(err);
+// 		}
+// 		else{
+// 			cb(null, data);
+// 		}
+// 	})
 
-			cb(err);
+// }
 
-		}
-		else{
 
-			cb(data);
-
-		}
+module.exports.findUser = async function(condition, cb){
+	return new Promise((resolve, reject) =>{
+		UserSchema.findOne(condition).then((res) =>{
+			if(res){ resolve(res);}
+		}).catch((err)=>{
+			reject(err);
+		})
 	})
-
 }

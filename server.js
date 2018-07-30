@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost:27017/login")
 var db = mongoose.connection;
 
 
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: 'mysecret' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 // BodyParser Middleware
@@ -20,6 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use('/', routes);
 app.use('/auth', auth);
-app.listen(3000, function(){
+app.listen(8000, function(){
 	console.log('Server started on port 3000 ');
 });
