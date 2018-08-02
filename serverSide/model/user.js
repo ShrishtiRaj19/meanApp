@@ -27,17 +27,7 @@ module.exports.insertUser = function(condition, cb){
 	condition.save(cb);
 }
 
-// module.exports.findUser = function(condition, cb){
-// 	UserSchema.findOne(condition, function(err,data){
-// 		if(err){
-// 			cb(err);
-// 		}
-// 		else{
-// 			cb(null, data);
-// 		}
-// 	})
 
-// }
 
 
 module.exports.findUser = async function(condition, cb){
